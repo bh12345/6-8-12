@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LR11</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <li>
+      <%= "active" if I18n.locale == :ru%>
+      <%= link_to "Rus", {locale: :ru} %>
+    </li>
+    <li>
+      <%= "active" if I18n.locale == :en%>
+      <%= link_to "En", {locale: :en} %>
+    </li>
+    <%= yield %>
+  </body>
+</html>

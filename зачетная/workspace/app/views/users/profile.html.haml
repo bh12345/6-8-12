@@ -1,0 +1,22 @@
+-# app/views/users/new.html.erb
+%h1= t('profile')
+.form-group
+  %label= t('name')+':'
+  %label
+    - begin
+      = '@'+current_user.name.downcase
+    - rescue
+      = '@'+'user_name_error'
+  
+.form-group
+  %label Email:
+  %label
+    - begin
+      = current_user.email.downcase
+    - rescue
+      = 'user_email_error'
+      
+.form-group
+  %label= t("user's posts")+':'
+  - Post.where(author: current_user.id).each do |post|
+    %a{href: "/posts/show?id="+post.id.to_s, class: 'h3'}= post.title

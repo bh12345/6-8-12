@@ -1,0 +1,54 @@
+@import "bootstrap";
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+.container {
+  margin: 0 auto;
+  margin-bottom: 4pt;
+  text-overflow: ellipsis;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+}
+
+.container, form, .post_block, .post_wraper, .comment-block{
+  padding: 8pt;
+  border-radius: 8pt;
+}
+
+input, textarea{
+  
+  border-radius: 5px;
+  border: 0px;
+  
+}
+
+form {
+  background-color: #1F1F1F;
+  text-align: center;
+}
+
+.post_block{
+  margin-top: 8pt;
+  margin-bottom: 8pt;
+  background-color: #2C2C2C;
+}
+
+.post_wraper{
+  background-color: #2f2f2f;
+}
+
+.comment-block{
+  background-color: #333333;
+  margin-top: 8pt;
+  margin-bottom: 8pt;
+  margin-left: 8pt;
+  margin-right: 8pt;
+}
+
+.nav-link, .nav-item {
+  color: white;
+}

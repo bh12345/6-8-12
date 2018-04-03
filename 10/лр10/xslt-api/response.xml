@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects type="array">
+  <object>
+    <elem>6</elem>
+    <size type="integer">1</size>
+  </object>
+  <object>
+    <elem>6</elem>
+    <size type="integer">1</size>
+  </object>
+  <object>
+    <elem>28, 6, 6, 6</elem>
+    <size type="integer">4</size>
+  </object>
+  <object>
+    <elem>6, 28, 6</elem>
+    <size type="integer">3</size>
+  </object>
+</objects>

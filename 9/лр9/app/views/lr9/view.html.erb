@@ -1,0 +1,21 @@
+<h1>Lr9#view</h1>
+<p>Find me in app/views/lr9/view.html.erb</p>
+<p>Исходно введенные значения: <%= @str %></p>
+<p>Всего отрезков: <%= @sizeArr %></p>
+<p>Максимальная длина отрезка: <%= @maxArr %></p>
+<table>
+  <tr>
+    <th>Номер</th>
+    <th>Длина</th>
+    <th>Содержание</th>
+  </tr>
+  <% @arr.each_index do |arrI| %>
+
+  <tr>
+    <td><%= arrI+1 %></td>
+    <td><%= @lenArr[arrI] %></td>
+    <td><%= @arr[arrI] %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Ввести другие значения", :lr8c_input %>

@@ -1,0 +1,6 @@
+<%= ('Поиск совершенных чисел') %>
+<%= form_tag url_for(controller: :lr, action: :view), method: 'post' do %>
+  <%= label_tag('Введите числа через пробел:') %>
+  <%= text_field_tag(:str) %> <br/>
+  <%= submit_tag('Ищем совершенные числа') %>
+<% end %>

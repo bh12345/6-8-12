@@ -1,0 +1,10 @@
+<h1>Lr9#input</h1>
+<p>Find me in app/views/lr9/input.html.erb</p>
+<%= form_tag("/lr9/view.json", :method => "get", remote: true, id: 'input_form') do %>
+  <%= label_tag("Введите числа через пробел:") %>
+  <%= text_field_tag (:str) %>
+  <br/>
+  <br/>
+  <%= submit_tag 'Ищем совершенные числа', id:"priv" %>
+  <div id= "result" ></div>
+<% end  %>

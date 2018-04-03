@@ -1,0 +1,40 @@
+%div{class: "post_block"}
+  %div{class: "post_head"}
+    %div{class: "post_title"}
+      -# %strong= t('title')+':'
+      %a{href: "/posts/show?id="+@post.id.to_s, class: 'h3'}= @post.title
+    %div{class: "post_stat"}
+      %strong= t('author')+':' %p
+      - begin
+        = User.where(id: @post.author).first.name
+      - rescue
+        = 'Author not found'
+    
+  %div{class: "post_wraper"}
+    - cache @post do
+      - @post.content.split("\n").each do |paragraph|
+        - next if paragraph =~ /^-{3,}+\r?+$/
+        %p= paragraph
+    
+  = form_for :comment, url: '/comments' do |f|
+    %p= t(:'add new comment')
+    = f.hidden_field :post, 
+      value: @post.id
+    = f.text_area :text, 
+      placeholder: t('write here'), 
+      rows: "4", 
+      style: 'width: 100%'
+    = f.submit t('create'), 
+      class: 'btn btn-info'
+
+  - Comment.where(post: @post.id).each do |comm|
+    -begin
+      - cache comm do
+        -# comm.created_at
+        %div{class: "row comment-block"}
+          %div{name: "comment_stat", class: 'col-sm-auto'}
+            %p= '@'+User.where(id: comm.author).first.name+':'
+          %div{name: "comment_wraper", class: 'col-sm-auto'}
+            %div= comm.text
+    - rescue
+      = 'comment error'

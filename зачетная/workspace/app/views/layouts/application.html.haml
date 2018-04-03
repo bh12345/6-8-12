@@ -1,0 +1,48 @@
+!!!
+%html
+  %head
+    %title Fp
+    = csrf_meta_tags
+    %meta{charset: "utf-8"}
+    %meta{content: "width=device-width; initial-scale=1", name: "viewport"}
+    = stylesheet_link_tag    'application', 
+                             'data-turbolinks-track': 'reload',
+                             media: 'all'
+    = javascript_include_tag 'application', 
+                             'data-turbolinks-track': 'reload'
+    
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-dark{:style => "background-color: #1F1F1F"}
+      %button.navbar-toggler{"data-target": "#navbarSupportedContent", "data-toggle": "collapse"}
+        %span.navbar-toggler-icon
+      %a.navbar-brand{:href => "/"} Xaker
+      #navbarSupportedContent.collapse.navbar-collapse 
+        %ul.navbar-nav.mr-auto
+          - if current_user
+            %li.nav-item
+              %a.nav-link{:href => "/profile"}
+                = '@'+current_user.name.downcase
+            %li.nav-item
+              %a.nav-link{:href => "/posts/new"}
+                = t('create post')
+            %li.nav-item
+              %a.nav-link{:href => "/"}
+                = t('new posts')
+          %li.nav-item.dropdown
+            %button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle{"data-toggle" => "dropdown"}
+              = t('language')
+            .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
+              %a.dropdown-item{:href => "?locale=en"} English
+              %a.dropdown-item{:href => "?locale=ru"} Русский
+      -# конец скрывающейся части
+      - unless current_user
+        %a.btn.btn-info{:href => "/signup"}
+          = t(:'signup')
+        %a.btn.btn-info.align-rigth{:href => "/login"}
+          = t(:'login')
+      - else    
+        %a.btn.btn-info.align-rigth{:href => "/logout"}
+          = t(:'logout')
+    
+    .container
+      = yield

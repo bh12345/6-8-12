@@ -1,0 +1,17 @@
+- @post.each do |post1|
+  %div{class: "post_block"}
+    %div{class: "post_head"}
+      %div{class: "post_title"}
+        %a{href: "/posts/show?id="+post1.id.to_s, class: 'h3'}= post1.title
+      %div{class: "post_stat"}
+        %strong= t('author')+':' %p
+        - begin
+          = User.where(id: post1.author).first.name
+        - rescue
+          = 'Author not found'
+      
+    %div{class: "post_wraper"}
+      - cache post1 do
+        - post1.content.split("\n").each do |paragraph|
+          - break if paragraph =~ /^-{3,}+\r?+$/
+          %p= paragraph
